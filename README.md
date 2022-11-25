@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.17.
 
 
-## Sample Account for Tesdting
+## Sample Account for Testing
 ADMIN 
 username: johndoe
 password john123
