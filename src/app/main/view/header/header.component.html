@@ -1,0 +1,31 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo fixed-top scrolling-navbar">
+    <mdb-navbar-brand>
+        <a class="navbar-brand" href="#">
+          <h3>ORDER SYSTEM</h3>
+        </a>
+
+        <links class="float-right">
+          <ul *ngIf="(user$ | async)?.id !== null" class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item avatar dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                <mdb-icon fas icon="user-circle"></mdb-icon>
+                <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.webp" width="20px" alt="" class="img-fluid rounded-circle z-depth-0"> -->
+              </a>
+              <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                <a (click)="logout()" class="dropdown-item waves-light" mdbWavesEffect >Log out</a>
+              </div>
+            </li>
+          </ul>
+        </links>
+
+        
+    </mdb-navbar-brand>
+
+    
+</mdb-navbar>
+
+<div id="alert" [hidden]="(alert$ | async) == null">
+  <div [class]="(alert$ | async)?.class" style="cursor: pointer;" role="alert" (click)="closeAlert()">
+    {{ (alert$ | async)?.message }}
+  </div>
+</div>

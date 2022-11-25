@@ -1,0 +1,46 @@
+<div class="container mt-5 pt-5">
+
+    <div class="row mt-5 pt-5">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <h4>ORDER</h4>
+                <form [formGroup]="order" class="col-md-12 form-inline mt-5">
+                    <input mdbInput type="text" formControlName="description" class="form-control py-0" id="inlineFormInputGroupUsername2" placeholder="Order Description">
+                    <button (click)="upsert()" type="submit" mdbBtn color="primary" class="form-control py-0">Submit</button>
+                </form>
+                <div class="col-md-12">
+                    <table mdbTable striped="true">
+                        <thead>
+                          <tr>
+                            <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr mdbTableCol *ngFor="let order of orders$ | async; let i = index">
+                            <th scope="row">{{ order.id }}</th>
+                            <td>{{ order.description }}</td>
+                            <td>
+                                <mdb-icon *ngIf="order.status == 'Rejected'" class="text-danger" fas icon="times-circle"></mdb-icon>
+                                <mdb-icon *ngIf="order.status == 'Approved'" class="text-success" fas icon="check-circle"></mdb-icon>
+                                {{ order.status }}
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mdb-icon (click)="update(order)" fas icon="edit"></mdb-icon>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mdb-icon (click)="delete(order)" fas icon="trash-alt" class="ml-2"></mdb-icon>
+                                    </div>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
